@@ -1,3 +1,4 @@
+// Copyright 2025 UNN-CS
 #ifndef INCLUDE_ALG_H_
 #define INCLUDE_ALG_H_
 #include <cstdint>
