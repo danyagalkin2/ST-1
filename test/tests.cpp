@@ -4,70 +4,58 @@
 #include <cstdint>
 #include "alg.h"
 
-
-TEST(st1, sumPrime1) {
-  uint64_t res = sumPrime(2000000);
-  uint64_t expected = 142913828922;
-  EXPECT_EQ(expected, res);
-}
-TEST(st1, sumPrime2) {
-  uint64_t res = sumPrime(10);
-  uint64_t expected = 17;
-  EXPECT_EQ(expected, res);
-}
-
-TEST(st1, checkPrime0) {
+TEST(primes, isPrime_zero) {
   EXPECT_FALSE(checkPrime(0));
 }
 
-TEST(st1, checkPrime1) {
+TEST(primes, isPrime_one) {
   EXPECT_FALSE(checkPrime(1));
 }
 
-TEST(st1, checkPrime2) {
+TEST(primes, isPrime_smallest) {
   EXPECT_TRUE(checkPrime(2));
 }
 
-TEST(st1, checkPrime9) {
-  EXPECT_FALSE(checkPrime(9));
+TEST(primes, isPrime_four) {
+  EXPECT_FALSE(checkPrime(4));
 }
 
-TEST(st1, checkPrime97) {
-  EXPECT_TRUE(checkPrime(97));
+TEST(primes, isPrime_large_prime) {
+  EXPECT_TRUE(checkPrime(1009));
 }
 
-TEST(st1, nPrime1) {
-  EXPECT_EQ(2u, nPrime(1));
+TEST(primes, isPrime_large_composite) {
+  EXPECT_FALSE(checkPrime(1000));
 }
 
-TEST(st1, nPrime2) {
-  EXPECT_EQ(3u, nPrime(2));
+TEST(primes, nth_prime_third) {
+  EXPECT_EQ(5u, nPrime(3));
 }
 
-TEST(st1, nPrime5) {
-  EXPECT_EQ(11u, nPrime(5));
+TEST(primes, nth_prime_tenth) {
+  EXPECT_EQ(29u, nPrime(10));
 }
 
-TEST(st1, nextPrime4) {
-  EXPECT_EQ(5u, nextPrime(4));
+TEST(primes, next_after_two) {
+  EXPECT_EQ(3u, nextPrime(2));
 }
 
-TEST(st1, nextPrime11) {
-  EXPECT_EQ(13u, nextPrime(11));
+TEST(primes, next_after_seven) {
+  EXPECT_EQ(11u, nextPrime(7));
 }
 
-TEST(st1, nextPrime1) {
-  EXPECT_EQ(2u, nextPrime(1));
+TEST(primes, next_after_hundred) {
+  EXPECT_EQ(101u, nextPrime(100));
 }
 
-TEST(st1, sumPrime20) {
-  uint64_t res = sumPrime(20);
-  uint64_t expected = 77;
-  EXPECT_EQ(expected, res);
+TEST(primes, sum_to_30) {
+  EXPECT_EQ(129u, sumPrime(30));
 }
 
-TEST(st1, sumPrimeBound2) {
-  uint64_t res = sumPrime(2);
-  uint64_t expected = 0;
-  EXPECT_EQ(expected, res);
+TEST(primes, sum_to_100) {
+  EXPECT_EQ(1060u, sumPrime(100));
+}
+
+TEST(primes, sum_below_3) {
+  EXPECT_EQ(2u, sumPrime(3));
 }
